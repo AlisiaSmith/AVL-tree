@@ -1,17 +1,5 @@
 #include "header.h"
 
-tree* BigRightCrook(tree *knot)
-{
-
-}
-
-
-tree* BigLeftCrook(tree *knot)
-{
-
-}
-
-
 tree* SmallLeftCrook(tree *knot)
 {
 	tree *tmp = knot->right;
@@ -28,4 +16,18 @@ tree* SmallRightCrook(tree *knot)
 	tmp->right = knot;
 
 	return tmp;
+}
+
+tree* BigLeftCrook(tree *knot)
+{
+	knot->right = SmallRightCrook(knot->right);
+	knot = SmallLeftCrook(knot);
+	return knot;
+}
+
+tree* BigRightCrook(tree *knot)
+{
+	knot->left = SmallLefttCrook(knot->left);
+	knot = SmallRightCrook(knot);
+	return knot;
 }

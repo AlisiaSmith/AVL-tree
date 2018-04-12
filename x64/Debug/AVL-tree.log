@@ -1,6 +1,7 @@
 ﻿  main.c
   turns.c
+d:\program files\smartgit\bin\avl-tree\turns.c(30): warning C4013: SmallLefttCrook: нет определения; предполагается "extern" с возвратом типа "int"
+d:\program files\smartgit\bin\avl-tree\turns.c(30): warning C4047: =: "Tree_st *" отличается по уровням косвенного обращения от "int"
   Создание кода...
-d:\program files\smartgit\bin\avl\avl-tree\turns.c(12): warning C4716: BigLeftCrook: должна возвращать значение
-d:\program files\smartgit\bin\avl\avl-tree\turns.c(6): warning C4716: BigRightCrook: должна возвращать значение
-  AVL-tree.vcxproj -> D:\Program Files\SmartGit\bin\AVL\AVL-tree\x64\Debug\AVL-tree.exe
+turns.obj : error LNK2019: ссылка на неразрешенный внешний символ SmallLefttCrook в функции BigRightCrook
+D:\Program Files\SmartGit\bin\AVL-tree\x64\Debug\AVL-tree.exe : fatal error LNK1120: неразрешенных внешних элементов: 1
