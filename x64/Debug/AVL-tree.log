@@ -1,0 +1,6 @@
+﻿  main.c
+  turns.c
+  Создание кода...
+d:\program files\smartgit\bin\avl\avl-tree\turns.c(12): warning C4716: BigLeftCrook: должна возвращать значение
+d:\program files\smartgit\bin\avl\avl-tree\turns.c(6): warning C4716: BigRightCrook: должна возвращать значение
+  AVL-tree.vcxproj -> D:\Program Files\SmartGit\bin\AVL\AVL-tree\x64\Debug\AVL-tree.exe
