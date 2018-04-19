@@ -15,6 +15,8 @@ typedef struct Tree_st
 	struct Tree_st *left;
 }tree;
 
+int def(tree *knot);
+
 tree* BigRightCrook(tree *knot);
 tree* BigLeftCrook(tree *knot);
 tree* SmallRightCrook(tree *knot);

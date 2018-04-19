@@ -1,77 +1,74 @@
 #include "header.h"
 
+ tree *insert(tree *root, int value)
+ {
 
-int verify(FILE *in)
-{
-	if (in == NULL)
-	{
-		printf("%s", "Error: file not found");
-		fclose(in);
-		return 1;
-	}
-	return 0;
-}
+ if (!root)
+ {
+ root = (tree*)calloc(1, sizeof(tree));
+ root->val = value;
+ root->height = 1;
 
-tree *build_tree(int num, FILE *in, tree *root)
-{
+ return root;
+ }
+ if (root->val <= value)
+ {
+	 root->left = (insert(root->left, value));
+	 root->height = root->left->height + 1;
+ }
+ else
+ {
+	 root->right = (insert(root->right, value));
+	 root->height = root->right->height + 1;
+ }
+ if (def(root) == 2)
+ {
+	 if (def(root->left) >= 0) root = SmallRightCrook(root);
+	 else root = BigRightCrook(root);
+ }
+ if (def(root) == -2)
+ {
+	 if (def(root->right) <= 0) root = SmallLeftCrook(root);
+	 else root = BigLeftCrook(root);
+ }
+ return root;
+ }
 
-	return root;
-}
-
-/*
-{
-int value;
-for(int i = 0; i < num; i++)
-{
-fscanf(in, "%d", value);
-insert(root, value);
-}
-}
-*/
-
-
- int insert(tree *root, int value, int h)
-{
-	int  weight = 0;
-	if (!root) 
-	{
-		root = (tree*)calloc(1, sizeof(tree));
-		root->val = value;
-		root->height = h;
-		return 0;
-	}
-	if (root->val <= value)
-	{
-		weight = insert(root->left, value, h + 1) - 1;
-	}
-	else
-	{
-		weight = insert(root->right, value, h + 1) + 1;
-	}
-
-	return weight;
-}
+ void delet_tree(tree* root)
+ {
+	 if (!root) return ;
+	 delet_tree(root->right);
+	 delet_tree(root->left);
+	 free(root);
+ }
 
 
+ unsigned int build_tree(unsigned int num, tree *root)
+ {
+	 unsigned int max_height = 0;
+	 int n;
+	 for (unsigned int i = 0; i < num; i++)
+	 {
+		 fscanf(stdin, "%d", &n);
+		 root = insert(root, n);
+		 max_height = root->height;
+	 }
+
+	 delet_tree(root);
+	 return max_height;
+ }
 
 int main(int argv, char *argc[])
-{
-	if (argv < 2) return 0;
-	
-	FILE *in;
-	int num;
+{	
+
+	unsigned int num, height;
 	tree *root = NULL;
 
-	in = fopen(argc[1], "r");
-	if (verify(in)) return 0;
+	fscanf(stdin, "%d", &num);
 
-	fscanf(in, "%d", &num);
+	height = build_tree(num, root);
 
-	if (num > 1)
-		root = build_tree(num, in, root);
-	else
-		printf("%d", num);
+	fprintf(stdout, "%d", height);
 
-	fclose(in);
 	return 0;
 }
